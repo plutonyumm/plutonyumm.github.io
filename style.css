@@ -45,3 +45,16 @@ a:hover {
 .card a {
   color: #ff5c72;
 }
+
+@font-face {
+  font-family: 'Zarathustra';
+  src: url('./fonts/Zarathustra.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1 {
+  font-family: 'Zarathustra', Georgia, serif;
+  font-weight: normal;
+}
