@@ -1,6 +1,6 @@
 body {
-  background: #0b0b0f;
-  color: #e8e8ea;
+  background: #17171d;
+  color: #fff6eb;
   font-family: ui-monospace, "Cascadia Code", "JetBrains Mono", monospace;
   max-width: 760px;
   margin: 0 auto;
@@ -18,11 +18,12 @@ a:hover {
 }
 
 .card {
-  background: #12121a;
+  background: #1f1f27;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  flex: 1;
 }
 
 .card img {
@@ -40,4 +41,9 @@ a:hover {
   display: inline-block;
   margin-top: 16px;
   font-weight: bold;
+}
+
+.project-grid {
+  display: flex;
+  gap: 24px;
 }
