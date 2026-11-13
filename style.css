@@ -1,0 +1,20 @@
+body {
+  background: #0b0b0f;
+  color: #e8e8ea;
+  font-family: ui-monospace, "Cascadia Code", "JetBrains Mono", monospace;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+a {
+  color: #ec3750;
+}
+
+.card {
+  background: #12121a;
+  border: 1px solid #ec3750;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
