@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: #ff5c72;
+  color: #ec3750;
   text-decoration: none;
 }
 
@@ -41,6 +41,7 @@ a:hover {
   display: inline-block;
   margin-top: 16px;
   font-weight: bold;
+  color: #ff5c72;
 }
 
 .project-grid {
