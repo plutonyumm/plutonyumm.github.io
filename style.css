@@ -27,6 +27,13 @@ a:hover {
   margin-bottom: 24px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   flex: 1;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #ff5c72;
 }
 
 .card img {
