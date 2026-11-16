@@ -1,5 +1,5 @@
 body {
-  background: #17171d;
+  background: linear-gradient(180deg, #1f181f, #17171d);
   color: #fff6eb;
   font-family: ui-monospace, "Cascadia Code", "JetBrains Mono", monospace;
   line-height: 1.6;
