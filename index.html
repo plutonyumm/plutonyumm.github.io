@@ -18,9 +18,23 @@
         <h1><strong>plutonyumm</strong></h1>
         <p>13 year old hack clubber, i like CS, AI/ML, and engineering</p>
 
-        <h2>projects i made</h2>
+        <div class="projects-heading">
+            <h2>projects i made</h2>
+            <button id="project-scroll-toggle" class="project-scroll-toggle" type="button" aria-label="Pause project carousel">
+                <i class="ph ph-pause" aria-hidden="true"></i>
+                <span>pause</span>
+            </button>
+        </div>
 
         <div class="project-grid">
+            <div class="card">
+                <img src="images/bad-filesystem.png" alt="bad-filesystem preview">
+                <div class="card-content">
+                    <h3><a href="https://github.com/plutonyumm/bad-filesystem">bad-filesystem</a></h3>
+                    <p>Bad Apple!! MV but it runs on the RAM's filesystem</p>
+                </div>
+            </div>
+
             <div class="card">
                 <img src="images/lazerbar-preview.png" alt="lazerbar preview">
                 <div class="card-content">
@@ -71,5 +85,83 @@
         <p style="color: #2a2a33;"><small>(btw i'm like 50% sure u can only be in the hack club slack to communicate with me there)</small></p>
     </div>
 
+    <script>
+        const projectGrid = document.querySelector('.project-grid');
+        const projectScrollToggle = document.querySelector('#project-scroll-toggle');
+        const projectScrollIcon = projectScrollToggle.querySelector('i');
+        const projectScrollLabel = projectScrollToggle.querySelector('span');
+
+        const cards = [...projectGrid.querySelectorAll('.card')];
+        let manuallyPaused = false;
+        let pointerPaused = false;
+
+        cards.forEach((card) => {
+            const clone = card.cloneNode(true);
+            clone.classList.add('project-card-clone');
+            projectGrid.appendChild(clone);
+        });
+
+        let loopWidth = 0;
+
+        function updateLoopWidth() {
+            const firstClone = projectGrid.querySelector('.project-card-clone');
+            if (firstClone) {
+                loopWidth = firstClone.offsetLeft - cards[0].offsetLeft;
+            }
+        }
+
+        updateLoopWidth();
+        window.addEventListener('resize', updateLoopWidth);
+
+        function isCarouselPaused() {
+            return manuallyPaused || pointerPaused;
+        }
+
+        function updatePauseButton() {
+            const paused = isCarouselPaused();
+            projectScrollIcon.className = paused ? 'ph ph-play' : 'ph ph-pause';
+            projectScrollLabel.textContent = paused ? 'play' : 'pause';
+            projectScrollToggle.setAttribute(
+                'aria-label',
+                paused ? 'Resume project carousel' : 'Pause project carousel'
+            );
+        }
+
+        projectScrollToggle.addEventListener('click', () => {
+            manuallyPaused = !manuallyPaused;
+            updatePauseButton();
+        });
+
+        projectGrid.addEventListener('mouseenter', () => {
+            pointerPaused = true;
+            updatePauseButton();
+        });
+
+        projectGrid.addEventListener('mouseleave', () => {
+            pointerPaused = false;
+            updatePauseButton();
+        });
+
+        let previousTime = performance.now();
+
+        function autoScrollProjects(currentTime) {
+            const mobile = window.matchMedia('(max-width: 768px)').matches;
+
+            if (!mobile && projectGrid.scrollWidth > projectGrid.clientWidth && !isCarouselPaused()) {
+                const elapsed = Math.min(currentTime - previousTime, 32);
+
+                projectGrid.scrollLeft += elapsed * 0.08;
+
+                if (loopWidth > 0 && projectGrid.scrollLeft >= loopWidth) {
+                    projectGrid.scrollLeft -= loopWidth;
+                }
+            }
+
+            previousTime = currentTime;
+            requestAnimationFrame(autoScrollProjects);
+        }
+
+        requestAnimationFrame(autoScrollProjects);
+    </script>
 </body>
 </html>

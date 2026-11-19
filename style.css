@@ -24,9 +24,9 @@ a:hover {
   background: #1f1f27;
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  flex: 1;
+  flex: 0 0 320px;
   transition: transform 0.2s ease, border-color 0.2s ease;
   border: 1px solid transparent;
 }
@@ -51,6 +51,25 @@ a:hover {
   display: flex;
   gap: 24px;
   margin: 0 auto;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  will-change: scroll-position;
+}
+
+.project-grid::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .project-grid {
+    flex-direction: column;
+  }
+
+  .project-card-clone {
+    display: none;
+  }
 }
 
 .card a {
@@ -109,4 +128,29 @@ h1 {
   align-items: center;
   gap: 8px;
   font-weight: bold;
+}
+
+.projects-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.project-scroll-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ff5c72;
+  border-radius: 999px;
+  background: #1f1f27;
+  color: #fff6eb;
+  padding: 8px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.project-scroll-toggle:hover {
+  background: #ff5c72;
+  color: #1f1f27;
 }
